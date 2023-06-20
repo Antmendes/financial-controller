@@ -1,14 +1,15 @@
 import React from "react";
 import styled from 'styled-components'
 import { GlobalStyle } from "./styles/global";
+import { Header } from "./components/Header";
 
 
  function App() {
   return (
-    <div className="App">
+    <>
       <GlobalStyle />
-      <h1>Hello World</h1>
-    </div>
+      <Header />
+    </>
   );
 }
 

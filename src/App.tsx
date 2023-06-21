@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
 import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
+import Modal from 'react-modal';
+import { NewTransactionModal } from "./components/NewTransactionModal";
 
-
+Modal.setAppElement('#root'); // para questao de acessibilidade
 
  function App() {
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+
+    function handleOpenNewTransactionModal() {
+        setIsNewTransactionModalOpen(true);
+    }
+
+    function handleCloseNewTransactionModal () {
+        setIsNewTransactionModalOpen(false);
+    }
+
   return (
     <>
       <GlobalStyle />
-      <Header />
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} /> 
       <Dashboard />
+      <NewTransactionModal 
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+      />
+      
     </>
   );
 }
